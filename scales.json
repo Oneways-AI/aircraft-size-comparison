@@ -1,0 +1,19 @@
+{
+  "reference": "Gulfstream G650 family (Ultra long-range) = 100%",
+  "aircraft": [
+    {"class": "Turboprop", "model": "Beechcraft King Air 350", "scale_pct": 42, "file": "turbo_scaled.jpg"},
+    {"class": "Very Light Jet", "model": "Cirrus SF50 Vision Jet", "scale_pct": 28, "file": "vlj_scaled.jpg"},
+    {"class": "Light Jet", "model": "Embraer Phenom 300", "scale_pct": 46, "file": "light_scaled.jpg"},
+    {"class": "Midsize", "model": "Cessna Citation XLS+", "scale_pct": 47, "file": "mid_scaled.jpg"},
+    {"class": "Super-midsize", "model": "Bombardier Challenger 350", "scale_pct": 62, "file": "super_scaled.jpg"},
+    {"class": "Heavy", "model": "Gulfstream G450 (GIV-SP)", "scale_pct": 80, "file": "heavy_scaled.jpg"},
+    {"class": "Ultra long-range", "model": "Gulfstream G650 family", "scale_pct": 100, "file": "ultra_scaled.jpg"}
+  ],
+  "style": {
+    "paint": "pure ivory",
+    "lighting": "single soft champagne rim-light",
+    "ground": "seamless near-black with soft reflection",
+    "gear": "retracted",
+    "markings": "none"
+  }
+}
