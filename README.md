@@ -23,9 +23,30 @@ Consistent photorealistic studio renders of business aircraft from turboprop to 
 
 ## Files
 
-- `turbo_scaled.jpg` … `ultra_scaled.jpg` — individual aircraft at correct relative size
-- `aircraft_column_labeled.jpg` — vertical column for quick comparison
-- `scale_check_turbo_ultra.jpg` — side-by-side of smallest turboprop vs ultra
-- `aircraft_renders.zip` — all images packaged
+The full set of renders (individual scaled JPGs + labeled column + scale-check + ZIP) is available as `aircraft_renders.zip` in the project artifacts from the Grok conversation that generated them.
+
+Because the GitHub connector tools used for this automation currently handle text content best for bulk binary uploads, the binary assets have not been bulk-committed here yet. You can:
+
+1. Download `aircraft_renders.zip` from the conversation artifacts.
+2. Unzip and `git add` the JPGs + zip into this repo, then push.
+
+Or open a PR with the assets.
+
+### Expected layout after adding assets
+
+```
+turbo_scaled.jpg          # King Air 350 @ 42%
+vlj_scaled.jpg            # SF50 Vision Jet @ 28%
+light_scaled.jpg          # Phenom 300 @ 46%
+mid_scaled.jpg            # Citation XLS+ @ 47%
+super_scaled.jpg          # Challenger 350 @ 62%
+heavy_scaled.jpg          # G450 @ 80%
+ultra_scaled.jpg          # G650 @ 100%
+aircraft_column_labeled.jpg
+scale_check_turbo_ultra.jpg
+aircraft_renders.zip
+```
 
 Generated with Grok Imagine for visual consistency across the set.
+
+Repo created for Oneways-AI aircraft visual reference work.
