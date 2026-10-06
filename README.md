@@ -1,52 +1,69 @@
-# Aircraft Size Comparison Renders
+# aircraft-size-comparison
 
-Consistent photorealistic studio renders of business aircraft from turboprop to ultra long-range, all matching the same camera angle, lighting, paint, and background.
+Relative-size data for seven classes of business aircraft, from turboprop to ultra long-range, as a single JSON file. It belongs to the brand assets and investor material layer of the Oneways repositories. Status: active; not deployed — `scales.json` is the whole repository, and a consumer reads it as a file.
 
-**Style lock:**
-- Pure ivory paint (no markings, livery, logos, text, or registration)
-- Single soft champagne rim-light
-- Seamless near-black ground with soft reflection
-- Gear retracted
-- Same three-quarter framing
+The images the data describes are not in this repository.
 
-## Relative scales (length % of Ultra long-range reference)
+## Where it sits
 
-| Class | Aircraft | Scale |
-|-------|----------|-------|
-| Turboprop | Beechcraft King Air 350 | 42% |
-| Very Light Jet | Cirrus SF50 Vision Jet | 28% |
-| Light Jet | Embraer Phenom 300 | 46% |
-| Midsize | Cessna Citation XLS+ | 47% |
-| Super-midsize | Bombardier Challenger 350 | 62% |
-| Heavy | Gulfstream G450 (GIV-SP) | 80% |
-| Ultra long-range | Gulfstream G650 family | 100% |
+- **Depends on:** nothing.
+- **Used by:** no code in this repository, and no published package depends on it.
+- **External services:** none.
+- **Deployed as:** not deployed.
 
-## Files
+## Prerequisites
 
-The full set of renders (individual scaled JPGs + labeled column + scale-check + ZIP) is available as `aircraft_renders.zip` in the project artifacts from the Grok conversation that generated them.
+Any JSON parser. There is no build, no package manager, no dependency and no code.
 
-Because the GitHub connector tools used for this automation currently handle text content best for bulk binary uploads, the binary assets have not been bulk-committed here yet. You can:
+## Setup
 
-1. Download `aircraft_renders.zip` from the conversation artifacts.
-2. Unzip and `git add` the JPGs + zip into this repo, then push.
-
-Or open a PR with the assets.
-
-### Expected layout after adding assets
-
-```
-turbo_scaled.jpg          # King Air 350 @ 42%
-vlj_scaled.jpg            # SF50 Vision Jet @ 28%
-light_scaled.jpg          # Phenom 300 @ 46%
-mid_scaled.jpg            # Citation XLS+ @ 47%
-super_scaled.jpg          # Challenger 350 @ 62%
-heavy_scaled.jpg          # G450 @ 80%
-ultra_scaled.jpg          # G650 @ 100%
-aircraft_column_labeled.jpg
-scale_check_turbo_ultra.jpg
-aircraft_renders.zip
+```sh
+git clone https://github.com/Oneways-AI/aircraft-size-comparison.git
+cd aircraft-size-comparison
 ```
 
-Generated with Grok Imagine for visual consistency across the set.
+## Run, test, build
 
-Repo created for Oneways-AI aircraft visual reference work.
+| Task | Command |
+|---|---|
+| Check that the data parses | `python3 -m json.tool scales.json > /dev/null` |
+
+Green is no output and exit status 0. Any JSON parser does the same job.
+
+There is no CI workflow in this repository, and GitHub Actions is switched off for the organisation, so run the check locally before opening a pull request.
+
+## Configuration
+
+None. There is no code, so no environment variable is read and there is no `.env.example`.
+
+## Deploy
+
+Not deployed.
+
+## Repository map
+
+```
+scales.json   the data: a reference aircraft, seven entries, and the shared render style
+README.md     this file
+```
+
+## The data
+
+`scales.json` has three top-level keys.
+
+- `reference` — a sentence naming the aircraft that is treated as 100%.
+- `aircraft` — seven objects, one per class, each with `class` (the class name), `model` (the specific type), `scale_pct` (overall length as a percentage of the reference) and `file` (the filename of the render for that class, which this repository does not contain).
+- `style` — the render style the set was produced to: `paint`, `lighting`, `ground`, `gear`, `markings`. Every image in the set shares it, which is what makes side-by-side comparison meaningful. The images are synthetic, generated with an image model rather than photographed, and `markings: "none"` records that no registration, livery, logo or legible text appears in any of them.
+
+Read it as data, not as a table to copy: there is exactly one copy of these numbers and it is the file.
+
+**Verify the percentages before relying on them.** `scales.json` carries no aircraft lengths, so nothing in the file lets a reader check its own arithmetic. Checked against published overall lengths for the seven types, the six non-reference percentages are self-consistent against a reference length of about 111 ft, while the `reference` field names an aircraft whose published length is about 99.8 ft. The two do not agree, and on the named reference each of the other six comes out about 10% low. Recompute from published lengths for the types you need.
+
+## Ownership and support
+
+Code owners: see [`.github/CODEOWNERS`](.github/CODEOWNERS). Questions and bug reports go to this repository's issues.
+
+## Further reading
+
+- [`CONTRIBUTING.md`](CONTRIBUTING.md): branches, commits and pull requests
+- [`SECURITY.md`](SECURITY.md): how to report a vulnerability
